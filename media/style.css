@@ -1,0 +1,13 @@
+/*
+:Author: Tom Wambold
+:Contact: tom5760@gmail.com
+
+Stylesheet customizations based upon Docutils HTML stylesheet by
+David Gooder.
+*/
+
+@import url(html4css1.css);
+
+div.sidebar {
+    width: 20%;
+}
