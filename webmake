@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+# Customizations to rst2html by Tom Wambold <tom5760@gmail.com>
+
+'''
+A minimal front end to the Docutils Publisher, producing HTML.
+'''
+
+import imp
+from optparse import OptionValueError
+
+from docutils import SettingsSpec
+from docutils.core import publish_cmdline
+
+def load_extension(option, opt_str, value, parser):
+    try:
+        imp.load_source('extension', value)
+    except IOError as e:
+        raise OptionValueError('Cannot load extension: {0}'.format(e.strerror))
+
+class WebmakeSettingsSpec(SettingsSpec):
+    settings_spec = (
+        'Webmake Options',
+        None,
+        (
+            ('Load RST extensions from a file.', ['--extension'], {
+                'type': str,
+                'action': 'callback',
+                'callback': load_extension,
+            }),
+        ),
+    )
+
+if __name__ == '__main__':
+    publish_cmdline(writer_name='html', settings_spec=WebmakeSettingsSpec,
+                    description='Generates HTML documents from'
+                                ' reStructuredText sources.')
