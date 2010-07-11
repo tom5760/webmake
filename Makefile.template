@@ -1,0 +1,31 @@
+# Makefile - Statically build websites using Webmake
+# :Author: Tom Wambold
+# :Contact: tom5760@gmail.com
+
+# Copy this file to your website directory, and modify as needed.
+
+###############
+# CONFIGURATION
+###############
+
+# The directory where the Webmake files are stored.
+WEBMAKE_DIR=~/code/webmake
+
+# The directory with your site files
+SRC_DIR = .
+
+# (OPTIONAL) Set this if you want to change the rst2html template
+TEMPLATE = $(SRC_DIR)/template.txt
+
+# (OPTIONAL) Set this if you are using a customized stylesheet
+STYLESHEET = $(SRC_DIR)/style.css
+
+# Additional optional global dependencies (add STYLESHEET and TEMPLATE here if
+# you use them).  Each of your .rst files will be rebuilt if these change.
+MORE_DEPS = $(STYLESHEET) $(TEMPLATE)
+
+# ReStructuredText extensions
+EXTENSIONS =\
+	$(WEBMAKE_DIR)/extensions.py \
+
+include $(WEBMAKE_DIR)/Makefile
