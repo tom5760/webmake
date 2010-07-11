@@ -12,7 +12,7 @@
 WEBMAKE_DIR=~/code/webmake
 
 # The directory with your site files
-SRC_DIR = .
+SRC_DIR = src
 
 # (OPTIONAL) Set this if you want to change the rst2html template
 TEMPLATE = $(SRC_DIR)/template.txt
